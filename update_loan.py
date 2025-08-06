@@ -8,8 +8,10 @@ def update_readme():
         for sheet_name in xlsx.sheet_names:
             if sheet_name == "주택담보대출":   
                 df1 = pd.read_excel(xlsx, sheet_name=sheet_name)
+                df1 = df1.tail(12)
             else:
                 df2 = pd.read_excel(xlsx, sheet_name=sheet_name)
+                df2 = df2.tail(12)
 
     md_table1 = "|날짜|ITEM_NAME1|DATA_VALUE|\n|---|---|---|\n"
     for _, row in df1.iterrows():

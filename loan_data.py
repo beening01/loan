@@ -546,7 +546,7 @@ def indicators_to_png():
         for sheet_name in xlsx.sheet_names:
             df = pd.read_excel(xlsx, sheet_name=sheet_name)
             df = df.tail(12)    # 최근 1년
-            x = df["TIME"]
+            x = df["TIME"].astype(str)
             y = df["DATA_VALUE"]
 
             y_min = y.min()    # 최솟값

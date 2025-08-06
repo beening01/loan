@@ -1,0 +1,38 @@
+name: 📊 ECOS 금리 데이터 자동 업데이트
+
+on:
+  schedule:
+    - cron: '5 * * * *'  # 매월 1일 00:00 UTC (KST 오전 9시)"0 0 1 * *"
+  workflow_dispatch:      # 수동 실행도 허용
+
+jobs:
+  update-interest-rate:
+    runs-on: ubuntu-latest
+
+    env:
+      ECOS_KEY: ${{ secrets.ECOS_KEY }}
+
+    steps:
+      - name: 📁 저장소 체크아웃
+        uses: actions/checkout@v4
+
+      - name: 🐍 Python 설치
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: 📦 필요한 패키지 설치
+        run: |
+          pip install pandas requests python-dotenv
+
+      - name: 📈 ECOS 금리 데이터 수집 및 README 갱신
+        run: python loan_data.py
+             python update_loan.py
+
+      - name: 💾 변경사항 커밋 및 푸시
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add README.md data/ images/
+          git commit -m "📈 README 및 금리 데이터 자동 업데이트 ($(date +'%Y-%m-%d'))" || echo "No changes to commit"
+          git push

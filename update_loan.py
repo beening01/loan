@@ -1,6 +1,6 @@
 
 import pandas as pd
-from loan_data import DATA
+from loan_data import DATA, OUT_DIR
 
 
 def update_readme():
@@ -23,12 +23,12 @@ def update_readme():
         f.write("# 📈 최근 1년간 대출 금리 흐름\n\n")
 
         f.write("## 🏠 주택담보대출\n\n")
-        f.write("![주택담보대출](OUT_DIR/주택담보대출.png)\n\n")
+        f.write("![주택담보대출](output/주택담보대출.png)\n\n")
         f.write("### 📋 월별 금리 데이터\n\n")
         f.write(md_table1 + "\n\n")
 
         f.write("## 💳 일반신용대출\n\n")
-        f.write("![일반신용대출](OUT_DIR/일반신용대출.png)\n\n")
+        f.write("![일반신용대출](output/일반신용대출.png)\n\n")
         f.write("### 📋 월별 금리 데이터\n\n")
         f.write(md_table2 + "\n")
 

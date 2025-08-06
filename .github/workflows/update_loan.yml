@@ -25,8 +25,9 @@ jobs:
           pip install pandas requests python-dotenv matplotlib openpyxl
 
       - name: 📈 ECOS 금리 데이터 수집 및 README 갱신
-        run: python loan_data.py
-             python update_loan.py
+        run: |
+          python loan_data.py
+          python update_loan.py
         env:
           ECOS_KEY: ${{ secrets.ECOS_KEY }}
 

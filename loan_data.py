@@ -557,7 +557,6 @@ def indicators_to_png():
             ax.plot(x, y, color=color, linewidth=2)
             # fill_between: 두 지점 사이의 영역을 색으로 채움
             ax.fill_between(x, y, y_min, color=color, alpha=0.10)
-            ax.set_axis_off()    # 축 제거
             fig.set_layout_engine("tight")
 
             fig.savefig(OUT_DIR/f"{sheet_name}.png", bbox_inches='tight', pad_inches=0)

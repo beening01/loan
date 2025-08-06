@@ -22,7 +22,7 @@ jobs:
 
       - name: 📦 필요한 패키지 설치
         run: |
-          pip install pandas requests python-dotenv
+          pip install pandas requests python-dotenv matplotlib
 
       - name: 📈 ECOS 금리 데이터 수집 및 README 갱신
         run: python loan_data.py
